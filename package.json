@@ -1,0 +1,19 @@
+{
+  "name": "namastereact",
+  "version": "1.0.0",
+  "description": "This is react course",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/lokesh-joshi01/namaste-react-loki.git)"
+  },
+  "keywords": [],
+  "author": "Lokesh Joshi",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.13.3"
+  }
+}
