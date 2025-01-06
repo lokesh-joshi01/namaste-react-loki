@@ -1,4 +1,4 @@
-const resData = [
+let resData = [
     {
       "info": {
         "id": "757288",

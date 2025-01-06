@@ -42,6 +42,15 @@
     border-radius: 5px;
     
 }
+.shimmer-cards{
+    margin: 5px;
+    background-color: #D3D3D3;
+    padding: 5px;
+    width: 150px;
+    height:200px;
+    border-radius: 5px;
+    
+}
 .res-card:hover{
     cursor: pointer;
     border: 1px solid black;
@@ -58,4 +67,55 @@
 .res-container{
     display: flex;
     flex-wrap: wrap;
+}
+.shimmer-container{
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.search-btn{
+    padding: 3px;
+    background-color: orange;
+    border: 1px solid black;
+}
+.filter-btn{
+    margin: 5px;
+    padding: 5px;
+    background-color: lightskyblue;
+    border: 1px solid black;
+    border-radius: 3px;
+    font-size: small;
+    cursor: pointer;
+}
+
+.filter-btn:hover {
+    border: 1px solid red;
+    cursor: pointer;
+}
+
+.filter-btns{
+    display: flex;
+}
+
+.filter-btn-budget{
+    margin: 5px;
+    padding: 5px;
+    background-color: lightgreen;
+    border: 1px solid black;
+    border-radius: 3px;
+    font-size: small;
+    cursor: pointer;
+}
+
+.filter-btn-budget:hover {
+    border: 1px solid red;
+    cursor: pointer;
+}
+
+.login-btn{
+    margin-top: 30px;
+    margin-right: 10px;
+    height: 30px;
+    padding: 0 1px;
+    cursor: pointer;
 }
