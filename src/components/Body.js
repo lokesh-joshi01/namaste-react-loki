@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ResCard from "./ResCard.js";
 import Shimmer from "./Shimmer.js";
+import { Link } from "react-router-dom";
+import EmojiPicker from 'emoji-picker-react';
 
 
 const Body = ()=>{
@@ -19,8 +21,6 @@ const Body = ()=>{
     const fetchData = async () =>{
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=29.2182644&lng=79.5129767&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
        const json = await data.json();
-
-       console.log(json);
        setListOfRestro(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
        setFilteredListOfRestro(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
@@ -30,12 +30,10 @@ const Body = ()=>{
             <div className="filter-btns">
             <div className="filter-topRated">
                 <button className="filter-btn" onClick={() => {
-                    
-                    const filteredListTopRated = json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants.filter(
-                        (res) => res.info.avgRating > 4
+                    const filteredListTopRated = listOfRestro.filter(
+                        (res) => res.info.avgRating > 4.3
                     );
-                    setListOfRestro(filteredListTopRated);
-                    console.log(listOfRestro);
+                    setFilteredListOfRestro(filteredListTopRated);
                 }
             }>
                 Top Rated Restaurents
@@ -43,14 +41,32 @@ const Body = ()=>{
             </div>
             <div className="filter-budget">
                 <button className="filter-btn-budget" onClick={() => {
-                    const filteredListBudget = json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants.filter(
+                    const filteredListBudget = listOfRestro.filter(
                         (res) => res.info.sla.deliveryTime < 25
                     );
-                    setListOfRestro(filteredListBudget);
-                    console.log(listOfRestro);
+                    setFilteredListOfRestro(filteredListBudget);
                 }
             }>
                 Fast Delivery Restaurents
+                </button>
+            </div>
+            <div className="filter-clear">
+                <button className="filter-clear-btn" onClick={() => {
+                    setFilteredListOfRestro(listOfRestro);
+                }
+            }>
+                Clear Filters
+                </button>
+            </div>
+            <div className="filter-clear">
+                <button className="filter-clear-btn" onClick={() => {
+               
+                        <EmojiPicker />
+                        
+                    
+                }
+            }>
+                Emojis
                 </button>
             </div>
             </div>
@@ -75,7 +91,11 @@ const Body = ()=>{
             </div>
             <div className="res-container">
                 {
-                filteredListOfRestro.map((restro) => (<ResCard key={restro.info.id} resData={restro}/>))
+                filteredListOfRestro.map((restro) => (
+                <Link style={{textDecoration: "none" , color: "inherit"}} key={restro.info.id} to={"/restaurants/"+restro.info.id}
+                >
+                    <ResCard  resData={restro}/>
+                    </Link>))
 
                 }
                 
